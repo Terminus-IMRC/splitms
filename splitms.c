@@ -58,13 +58,13 @@ int main(int argc, char *argv[])
 
 	rbuf=(char*)malloc(BUFFERSIZE*sizeof(char));
 	if(!rbuf){
-		fprintf(stderr, "%s: malloc: %ld: %s\n", progname, BUFFERSIZE, strerror(errno));
+		fprintf(stderr, "%s: malloc: %d: %s\n", progname, BUFFERSIZE, strerror(errno));
 		exit(errno);
 	}
 
 	wbuf=(char*)malloc(BUFFERSIZE*sizeof(char));
 	if(!wbuf){
-		fprintf(stderr, "%s: malloc: %ld: %s\n", progname, BUFFERSIZE, strerror(errno));
+		fprintf(stderr, "%s: malloc: %d: %s\n", progname, BUFFERSIZE, strerror(errno));
 		exit(errno);
 	}
 
@@ -119,7 +119,7 @@ int main(int argc, char *argv[])
 			wbuf[wc++]=rbuf[rc];
 		}
 		if(!newline_appeared){
-			fprintf(stderr, "%s: input line is too long for BUFFERSIZE %ld\n", progname, BUFFERSIZE);
+			fprintf(stderr, "%s: input line is too long for BUFFERSIZE %d\n", progname, BUFFERSIZE);
 			exit(EXIT_FAILURE);
 		}
 		write(output_fd, wbuf, wc);
